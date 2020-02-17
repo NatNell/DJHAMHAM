@@ -57,5 +57,5 @@ function stop_song() {
 }
 function play_speed() {
   ele.play()
-  ele.speed(4);
+  ele.speed(0.4);
 }
