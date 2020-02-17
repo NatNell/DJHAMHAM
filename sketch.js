@@ -26,6 +26,18 @@ function setup() {
   button = createButton('play it');
   button.position(482, 68);
   button.mousePressed(play_speed);
+
+   //Connect/Disconnect Buttons
+   connectBtn = createButton("connect");
+   connectBtn.position(20,height-30);
+   connectBtn.mousePressed(connect);
+   connectBtn.style("width:180px");
+   
+   disconnectBtn = createButton("disconnect");
+   disconnectBtn.position(200,height-30);
+   disconnectBtn.mousePressed(disconnect);
+   disconnectBtn.style("width:180px");
+ 
 }
 
 // This function is called when the video loads
@@ -57,5 +69,32 @@ function stop_song() {
 }
 function play_speed() {
   ele.play()
-  ele.speed(0.4);
+  ele.speed(0.5);
+}
+
+function send(data){
+  if(connectedDevice != null){
+  sendText = "sent: "+data; 
+  uBitSend(connectedDevice,data);
+  }else{
+    print("device not connected!");
+  }
+}
+
+function connect() {
+  uBitConnectDevice(uBitEventHandler);
+
+}
+
+function disconnect() {
+  //connectedDevice.close();
+  uBitDisconnect(connectedDevice);
+
+}
+
+function handleData(data){
+  //print(data);
+  recvText = "recv: "+ data.data;
+  Rate = int(data.data);
+  
 }
