@@ -12,7 +12,7 @@ let connectBtn;
 
 
 function setup() {
-  createCanvas(710, 10);
+  createCanvas(710, 100);
   //Here we create a p5.MediaElement object
   //using the createAudio() function.
     ele = createVideo('media/nyan.mp4', vidLoad);
